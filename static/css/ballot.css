@@ -1,0 +1,20 @@
+.v_dashboard{
+    /* border:2px solid black; */
+    position:absolute;
+    height:100%;
+}
+
+.v_dashboard #candidate{
+
+    border:1px solid lightgrey;
+}
+
+.v_dashboard #candidateChosen{
+    border:2px solid green;
+}
+
+
+
+#voteBtn{
+    display:none;
+}

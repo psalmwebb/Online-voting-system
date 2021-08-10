@@ -1,0 +1,25 @@
+{
+  "name": "online_voting_system",
+  "version": "1.0.0",
+  "description": "An online voting system",
+  "main": "app.js",
+  "author": "Psalm Webb",
+  "license": "ISC",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.5",
+    "node-mailer": "^0.1.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  }
+}

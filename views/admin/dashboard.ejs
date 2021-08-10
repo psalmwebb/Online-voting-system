@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="/css/sidebar.css" rel="stylesheet"/>
+    <link href="/css/dashboard.css" rel="stylesheet"/>
+</head>
+<body>
+    
+    <div class="row p-0">
+        <%- include("partials/sidebar.ejs") %> 
+
+        <div class="dashboard col-md-9 offset-md-3">
+
+            <div id="coverDiv"></div>
+
+
+            <div class="add-new-election mt-4" style="<%= elections.length ? 'display:block' : 'display:none' %>">
+                <button class="btn btn-success" id="btnElectAdd">New Election</button>
+            </div>
+            
+            <div class="no-election" style="<%= elections.length ? 'display:none' : '' %>">
+                <button id="btnElectNew" class="btn btn-success btn-lg">CREATE AN ELECTION</button>
+            </div>
+
+            <% if(elections.length){%> 
+            <div class="scheduled mt-4">
+               <% elections.forEach(election=>{ %> 
+                    <div>
+                        <center><b><%= election.position %></b></center>
+                        <hr/>
+                        <% if(election.candidatesName.length){%> 
+                        <p>
+                           <table class="table table-striped text-center">
+                               <tr>
+                                   <th>Candidate</th>
+                                   <th>Number of votes</th>
+                               </tr>
+                           <% election.candidatesName.forEach(candidateName=>{%>
+                                <tr>
+                                   <td><%= candidateName %> </td>
+                                   <td><%= candidates.find(candidate => candidate.firstName === candidateName.split(" ")[0]).numOfVotes %> </td>
+                                </tr>
+                        <% }) %> 
+                          </table>
+                        </p>
+                        <% }else{ %> 
+                             <div>No candidate..</div>
+                        <% } %> 
+                    </div>
+                <% }) %> 
+            </div>
+            <% } %> 
+
+            <form class="col-md-5 offset-md-3 p-3" onsubmit="handleSubmit()">
+                <div class="d-flex justify-content-end">
+                    <span id="closeModal">Close</span>
+                </div>
+                <div class="form-group">
+                    <label>Position</label>
+                    <input type="text" name="position" class="form-control"/>
+                </div>
+
+                <div class="form-group">
+                    <label>No. of Candidate</label>
+                    <input type="text" name="numOfCandidate" class="form-control"/>
+                </div>
+
+                <div class="form-group mt-2">
+                    <button class="btn btn-secondary btn-block">DONE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const count = 10;
+        let createElectBtnNew = document.querySelector("#btnElectNew");
+        let createElectBtnAdd = document.querySelector("#btnElectAdd");
+        let createElectForm = document.querySelector("form");
+        const coverDiv = document.querySelector("#coverDiv");
+        const closeModal = document.querySelector("#closeModal");
+
+        closeModal.onclick=()=>{
+            createElectForm.style.display = "none"
+            coverDiv.style.display = "none"
+        }
+
+        createElectBtnNew.addEventListener("click",function(e){
+
+            this.parentElement.style.display = "none";
+            createElectForm.style.display = "block";
+            coverDiv.style.display = "block"
+        })
+
+        createElectBtnAdd.addEventListener("click",function(e){
+            
+            createElectForm.style.display = "block";
+            coverDiv.style.display = "block";
+        })
+
+        async function handleSubmit(){
+          event.preventDefault();
+
+          console.log("called");
+
+          let position = event.target.position.value;
+          let numOfCandidate = event.target.numOfCandidate.value;
+
+          const res = await fetch("/create/election",{
+              method:"post",
+              headers:{
+                  "Content-Type":"application/json"
+              },
+              body:JSON.stringify({position,numOfCandidate})
+          })
+
+          const data = await res.json()
+
+          console.log(data);
+
+          location.reload()
+
+        }
+    </script>
+</body>
+</html>
