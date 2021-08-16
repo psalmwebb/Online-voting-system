@@ -11,7 +11,7 @@ const remoteDbURL = `mongodb+srv://${dbUser}:${dbPass}@cluster0.gqtmu.mongodb.ne
 
 module.exports = (app)=>{
     
-    mongoose.connect("mongodb://localhost/voting-system",{useNewUrlParser:true,useUnifiedTopology:true})
+    mongoose.connect(remoteDbURL,{useNewUrlParser:true,useUnifiedTopology:true})
 
     .then(()=>{
         app.listen(5000,()=> console.log("Serving at port : 5000"))
