@@ -14,7 +14,24 @@
 }
 
 
-
 #voteBtn{
     display:none;
+}
+
+nav ul li{
+    list-style: none;
+}
+
+nav ul li a{
+    padding:10px;
+    text-decoration:none;
+    color:white;
+    border:1px solid limegreen;
+    border-radius:3px;
+    transition:all 0.3s;
+}
+
+nav ul li a:hover{
+    color:black;
+    background-color:limegreen;
 }

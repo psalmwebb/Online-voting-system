@@ -42,6 +42,11 @@ nav ul li a:hover{
    background-color:#1b1b1b;
 }
 
+
+nav ul li a i{
+   margin-right:10px;
+}
+
 .active{
    border-left-color:white;
    border-left-width:14px;

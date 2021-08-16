@@ -1,5 +1,4 @@
 
-
 const router = require("express").Router();
 
 const passport = require("passport");
@@ -8,6 +7,10 @@ const {isAuth,isVoter} = require("../middlewares/auth.middleware");
 
 const controller = require("../controllers/main.controller");
 
+
+router.get("/",(req,res)=>{
+  res.redirect("/dashboard");
+})
 
 router.get("/admin/login",controller.gAdminLogin);
 
