@@ -1,6 +1,12 @@
 
 const mongoose = require("mongoose");
 
+const dbPass = process.env.MONGODB_PASSWORD
+const dbUser = process.env.MONGODB_USERNAME
+const dbName = process.env.MONGODB_NAME
+
+
+const remoteDbURL = `mongodb+srv://${dbUser}:${dbPass}@cluster0.gqtmu.mongodb.net/${dbName}?retryWrites=true&w=majority`
 
 
 module.exports = (app)=>{
