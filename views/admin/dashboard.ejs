@@ -15,7 +15,7 @@
     <div class="row p-0">
         <%- include("partials/sidebar.ejs") %> 
 
-        <div class="dashboard col-md-9 offset-md-3">
+        <div class="dashboard col-9 offset-3">
 
             <div id="coverDiv"></div>
 
@@ -93,7 +93,6 @@
 
         createElectBtnNew.addEventListener("click",function(e){
 
-            this.parentElement.style.display = "none";
             createElectForm.style.display = "block";
             coverDiv.style.display = "block"
         })

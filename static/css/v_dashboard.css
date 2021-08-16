@@ -35,3 +35,7 @@ nav ul li a:hover{
     color:black;
     background-color:limegreen;
 }
+
+#candidate{
+    border:1px solid lightgrey;
+}

@@ -4,14 +4,12 @@
     height:100%;
 }
 
-.v_dashboard #candidate{
+#candidate{
 
     border:1px solid lightgrey;
 }
 
-.v_dashboard #candidateChosen{
-    border:2px solid green;
-}
+
 
 
 

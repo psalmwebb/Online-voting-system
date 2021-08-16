@@ -15,7 +15,7 @@
     <div class="row">
         <%- include("partials/sidebar.ejs") %> 
 
-        <div class="ballot col-md-9 offset-md-3">
+        <div class="ballot col-9 offset-3">
             <hr/>
             <div class="mt-5">
                 <% elections.forEach(election=>{%>
@@ -51,9 +51,11 @@
             candidate.addEventListener("click",()=>{
                 candidate.parentElement.querySelectorAll("div").forEach(div=>{
                     div.id = "candidate"
+                    div.style.border="1px solid lightgrey";
                 })
                 candidate.id = "candidateChosen"
-                voteBtn.style.display = "block"
+                candidate.style.border = "2px solid lightgreen";
+                voteBtn.style.display = "block";
             })
         })
 
